@@ -28,6 +28,9 @@ public class Command {
         else if(command.equals("///restart")){
            restart(); 
         }
+        else if(command.equals("///help")){
+            help();
+        }
         else {
             
         }
@@ -63,6 +66,13 @@ public class Command {
         builder.start();
         System.exit(0);
         System.out.println("Still a work in progress. ");
+    }
+    
+    private static void help(){
+        System.out.println("List of console commands:");
+        System.out.println("///shutdown - shutsdown the console.");
+        System.out.println("///restart - restarts the program by calling the source jar file. ");
+        System.out.println("///help - lists the commands and uses for the commands. ");
     }
     
     /*
