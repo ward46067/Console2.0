@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ward.console;
+package com.ward;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,9 +36,10 @@ public class Console {
     
     
     /**
-     * 
-     * @param x - Set the width of the console window. Default 300
-     * @param y - Set the height of the console window. Default 300
+     * X - Set the height of the console window. Default 300
+     * Y - Set the width of the console window. Default 300
+     * @param x 
+     * @param y 
      */
     public void setSize(int x, int y){
         this.x = x;
@@ -52,8 +55,8 @@ public class Console {
     }
     
     /**
-     * 
-     * @param title - Change the title of the console. Default "Console"
+     * Change the title of the console. Default "Console"
+     * @param title 
      */
     public void setTitle(String title){
         this.title = title;
@@ -157,13 +160,17 @@ public class Console {
         build();
     }
     
-    public String answer() throws InterruptedException{
+    /**
+     * Returns a string, but only returns it after the user has typed something into the console.
+     * @return private String usrAnswer
+     * @throws InterruptedException 
+     */
+    public String answer() throws InterruptedException, URISyntaxException, IOException{
         scan();
-        
         return usrAnswer;
     }
     
-    private void scan() throws InterruptedException  {
+    public void scan() throws InterruptedException, URISyntaxException, IOException  {
 		
         usrAnswer = (" ");
 
@@ -172,13 +179,14 @@ public class Console {
         scanCheck();          
     }
 
-    private void scanCheck() throws InterruptedException {
+    private void scanCheck() throws InterruptedException, URISyntaxException, IOException {
 
-        if (ifAnswer == true) {   
+        if (ifAnswer == true) {  
+            Command.commandCheck(usrAnswer);
         }
         else {
             Thread.sleep(10);
             scanCheck();
         }
-    }
+    }  
 }

@@ -5,25 +5,26 @@
  */
 package test;
 
-import com.ward.console.Console;
+import com.ward.Console;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  *
  * @author dalen
  */
-public class main {
+public class test {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, URISyntaxException, IOException {
         // TODO code application logic here
-        
         Console console = new Console();
         
-        console.setSize(300, 300);
+        console.build(500, 500, "TEST");
         
-        console.build();
+        System.out.println(console.answer());
     }
     
 }
