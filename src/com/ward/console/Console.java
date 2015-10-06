@@ -6,6 +6,9 @@
 package com.ward.console;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +29,8 @@ public class Console {
     
     private int x = 300, y = 300; //global x and y size of console, 300 square by default
     private String title = "Console"; //title of the console, set to "Console" by default
+    private String usrAnswer;
+    private boolean ifAnswer;
     
     
     /**
@@ -103,6 +108,22 @@ public class Console {
         autoscroll.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        enter.addActionListener(new ActionListener() {
+            
+            
+            public void actionPerformed(ActionEvent arg0) {
+                
+                
+                String printUsrInput = usrInput.getText();
+                
+                usrAnswer = printUsrInput;
+                System.out.println(usrAnswer);
+                ifAnswer = true;
+                
+                usrInput.setText("");
+            }
+        });
     }
     
     /**
@@ -136,4 +157,28 @@ public class Console {
         build();
     }
     
+    public String answer() throws InterruptedException{
+        scan();
+        
+        return usrAnswer;
+    }
+    
+    private void scan() throws InterruptedException  {
+		
+        usrAnswer = (" ");
+
+        ifAnswer = false;
+
+        scanCheck();          
+    }
+
+    private void scanCheck() throws InterruptedException {
+
+        if (ifAnswer == true) {   
+        }
+        else {
+            Thread.sleep(10);
+            scanCheck();
+        }
+    }
 }
