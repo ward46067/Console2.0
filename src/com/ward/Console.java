@@ -34,6 +34,37 @@ public class Console {
     private String usrAnswer;
     private boolean ifAnswer;
     
+    public Console(){
+        
+    }
+    /**
+     * Create the console in one line of code. 
+     * @param x
+     * @param y
+     * @param title 
+     */
+    public Console(int x, int y, String title){
+        this(x, y);
+        setTitle(title); 
+    }
+    
+    /**
+     * Create the console with custom size but default title.
+     * @param x
+     * @param y 
+     */
+    public Console(int x, int y){
+        setSize(x, y);
+    }
+    
+    /**
+     * Create the console with default size but custom title.
+     * @param title 
+     */
+    public Console(String title){
+        setTitle(title);
+    }
+    
     
     /**
      * X - Set the height of the console window. Default 300
@@ -127,37 +158,6 @@ public class Console {
                 usrInput.setText("");
             }
         });
-    }
-    
-    /**
-     * Create the console in one line of code. 
-     * @param x
-     * @param y
-     * @param title 
-     */
-    public void build(int x, int y, String title){
-        setSize(x, y);
-        setTitle(title);
-        build();  
-    }
-    
-    /**
-     * Create the console with custom size but default title.
-     * @param x
-     * @param y 
-     */
-    public void build(int x, int y){
-        setSize(x, y);
-        build();
-    }
-    
-    /**
-     * Create the console with default size but custom title.
-     * @param title 
-     */
-    public void build(String title){
-        setTitle(title);
-        build();
     }
     
     /**

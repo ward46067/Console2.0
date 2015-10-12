@@ -22,7 +22,7 @@ public class test {
         // TODO code application logic here
         Console console = new Console();
         
-        console.build(500, 500, "TEST");
+        console.build();
         
         System.out.println(console.answer());
     }
