@@ -188,5 +188,21 @@ public class Console {
             Thread.sleep(10);
             scanCheck();
         }
-    }  
+    }
+    /**
+     * prints variable text 
+     * @param text 
+     */
+    public void print(String text){
+        System.out.print(text);
+    }
+    /**
+     * prints variable text on new line
+     * @param text 
+     */
+    public void println(String text){
+        System.out.println(text);
+    }
+    
+    
 }

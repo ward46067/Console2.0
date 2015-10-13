@@ -24,7 +24,9 @@ public class test {
         
         console.build();
         
-        System.out.println(console.answer());
+        console.scan();
+        
+        
     }
     
 }
