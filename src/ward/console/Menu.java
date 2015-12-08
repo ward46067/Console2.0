@@ -1,4 +1,4 @@
-package com.ward;
+package ward.console;
 
 public class Menu {
     private String[] menu;

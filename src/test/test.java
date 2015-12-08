@@ -1,32 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
-import com.ward.Console;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import ward.console.Console;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import ward.draw.GUI;
 
 /**
  *
  * @author dalen
  */
 public class test {
-
+    private static Graphics2D draw;
+    public static GUI gui;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException, URISyntaxException, IOException {
-        // TODO code application logic here
-        Console console = new Console();
+        gui = new GUI();
         
-        console.build();
+        gui.bulid();
+        draw = gui.getGraphics2D();
         
-        console.scan();
+        drawPanel.drawPanel(draw);
         
-        
+    }
+    
+    public static void getGraphics() throws InterruptedException{
+        draw = gui.getGraphics2D();
+        Thread.sleep(50);
+        drawPanel.drawPanel(draw);
+    }
+    
+    public static void begin(){
+        gui.begin();
     }
     
 }

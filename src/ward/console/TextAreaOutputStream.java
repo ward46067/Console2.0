@@ -1,4 +1,4 @@
-package com.ward;
+package ward.console;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
