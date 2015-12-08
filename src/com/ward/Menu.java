@@ -9,9 +9,11 @@ public class Menu {
             l = 1;
         }
         
-        menu = new String[l];
+        menu = new String[l + 1];
         title = t;
         menu[0] = title;
+        
+        
     }
     
     public Menu(int l){
@@ -37,10 +39,15 @@ public class Menu {
     public void print(){
         for(int i = 0; i < menu.length; i++){
             if(i == 0){
-                System.out.println(title);
+                System.out.println(menu[i]);
             } else {
                 System.out.println(i + ": " + menu[i]);
             }
         }
+    }
+    
+    public void setTitle(String t){
+        title = t;
+        menu[0] = title;
     }
 }
