@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -156,12 +158,32 @@ public class Console {
      * @return private String usrAnswer
      * @throws InterruptedException 
      */
-    public String answer() throws InterruptedException, URISyntaxException, IOException{
+    public String answer(){
         scan();
         return usrAnswer;
     }
     
-    public void scan() throws InterruptedException, URISyntaxException, IOException  {
+    public int answerInt(){
+        String s = answer();
+        return Integer.parseInt(s);
+    }
+    
+    public double answerDouble(){
+        String s = answer();
+        return Double.parseDouble(s);
+    }
+    
+    public float answerFloat(){
+        String s = answer();
+        return Float.parseFloat(s);
+    }
+    
+    public boolean answerBoolean(){
+        String s = answer();
+        return Boolean.parseBoolean(s);
+    }
+    
+    public void scan(){
 		
         usrAnswer = (" ");
 
@@ -170,13 +192,23 @@ public class Console {
         scanCheck();          
     }
 
-    private void scanCheck() throws InterruptedException, URISyntaxException, IOException {
+    private void scanCheck(){
 
         if (ifAnswer == true) {  
-            Command.commandCheck(usrAnswer);
+            try {
+                Command.commandCheck(usrAnswer);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else {
-            Thread.sleep(10);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+            }
             scanCheck();
         }
     }
